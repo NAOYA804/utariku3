@@ -1,11 +1,14 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  root: '.', // プロジェクトルートを明示
-  publicDir: 'public', // 静的ファイルの場所（favicon など）
+  root: '.',               // ルートはプロジェクト直下
+  publicDir: 'public',     // 静的ファイルは public
   plugins: [react()],
   build: {
-    outDir: 'dist', // ビルド後の出力先
+    rollupOptions: {
+      input: 'public/index.html', // ここで index.html の場所を指定！
+    },
+    outDir: 'dist',
   },
-})
+});
